@@ -30,12 +30,12 @@ class Discover:
                 if sys.platform.startswith('freebsd') \
                         or sys.platform.startswith('linux') \
                         or sys.platform.startswith('darwin'):
-                    p = subprocess.Popen([netdiscover_path, '-v'],
+                    p = subprocess.Popen([netdiscover_path, '-help'],
                                          bufsize=10000,
                                          stdout=subprocess.PIPE,
                                          close_fds=True)
                 else:
-                    p = subprocess.Popen([netdiscover_path, '-v'],
+                    p = subprocess.Popen([netdiscover_path, '-help'],
                                          bufsize=10000,
                                          stdout=subprocess.PIPE)
 
@@ -106,7 +106,7 @@ class Discover:
         if sleep_supression:
             self.command += ' -S'
 
-        self._raw_result = subprocess.Popen(shlex.split(self.command))
+        self._raw_result = subprocess.check_output(shlex.split(self.command))
         self._scan_result = self.parse_output(self._raw_result)
 
         return self._scan_result
