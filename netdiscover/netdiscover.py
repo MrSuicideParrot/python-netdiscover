@@ -11,7 +11,7 @@ class Discover:
         :param netdiscover_path: netdiscover path
 
         """
-        if os.getenv('USER') == 'root':
+        if os.getenv('USER') != 'root':
             raise Exception('Programming not running as root.')
 
         path_found = False
@@ -113,8 +113,8 @@ class Discover:
 
     @staticmethod
     def parse_output(out):
-        content = out.split("\n")
-        content = content[:-2]
+        content = out.split(b"\n")
+        content = content[:-3]
 
         results = []
 
