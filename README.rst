@@ -35,3 +35,16 @@ From python/ipython:
     [{'mac': b'73:8b:10:0e:bd:23', 'ip': b'192.168.2.1'}, {'mac': b'f4:3c:4a:73:47:07', 'ip': b'192.168.2.2'}]
 
 
+Notes
+=====
+This tool needs to be run as root. It is necessary to be presented on the system the *netdiscover* tool. The library will look for the *netdiscovery* binary in the following paths:
+*  netdiscover
+* /usr/bin/netdiscover
+* /usr/sbin/netdiscover
+* /usr/local/bin/netdiscover
+* /sw/bin/netdiscover
+* /opt/local/bin/netdiscover
+
+If *netdiscovery* is not present in any of the paths above, you can specifie path with the *netdiscover_path* on Discover object.
+.. code-block:: python
+    disc = Discover(netdiscover_path="path_of_netdiscover")
