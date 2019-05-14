@@ -2,9 +2,20 @@
 python-netdiscover
 ==================
 
+.. image:: https://img.shields.io/pypi/v/python-netdiscover.svg
+        :target: https://pypi.python.org/pypi/python-netdiscover
+
+.. image:: https://img.shields.io/pypi/pyversions/python-netdiscover.svg
+        :target: https://pypi.python.org/pypi/python-netdiscover
+
 The  python-netdiscover is a simple wrapper for the `netdiscover reconnaissance tool <https://sourceforge.net/projects/netdiscover/>`_.
 
 This library offers a simple way to create scans from a python script and analyse the results.
+
+
+* Documentation: https://python-netdiscover.readthedocs.io
+* GitHub: https://github.com/MrSuicideParrot/python-netdiscover
+* PyPI: https://pypi.org/project/python-netdiscover/
 
 Installation
 ============
