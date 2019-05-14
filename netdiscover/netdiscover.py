@@ -8,7 +8,7 @@ class Discover:
 
     def __init__(self, netdiscover_path=None):
         """
-        :param netdiscover_path: netdiscover path
+        :param netdiscover_path: Path where is the netdiscover binary. If not defined it will search on defaults netdiscover locations
 
         """
         if os.getenv('USER') != 'root':
@@ -113,6 +113,11 @@ class Discover:
 
     @staticmethod
     def parse_output(out):
+        """
+
+        :param out: Raw output to parse
+        :return: List with the results from the scan. Each result is represented by a dictionary with two keys, 'ip' and 'mac'.
+        """
         content = out.split(b"\n")
         content = content[:-3]
 

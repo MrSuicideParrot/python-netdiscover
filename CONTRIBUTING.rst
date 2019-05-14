@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/MrSuicideParrot/netdiscover/issues.
+Report bugs at https://github.com/MrSuicideParrot/python-netdiscover/issues.
 
 If you are reporting a bug, please include:
 

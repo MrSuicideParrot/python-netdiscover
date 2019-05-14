@@ -1,8 +1,8 @@
-=====
+==================
 python-netdiscover
-=====
+==================
 
-The  python-netdiscover is a simple wrapper for the [netdiscover reconnaissance tool](https://sourceforge.net/projects/netdiscover/)
+The  python-netdiscover is a simple wrapper for the `netdiscover reconnaissance tool <https://sourceforge.net/projects/netdiscover/>`_.
 
 This library offers a simple way to create scans from a python script and analyse the results.
 
@@ -33,7 +33,7 @@ From python/ipython:
     >>> from netdiscover import *
     >>> disc = Discover()
     >>> disc.scan(ip_range="192.168.1.0/24")
-    [{'mac': b'73:8b:10:0e:bd:23', 'ip': b'192.168.2.1'}, {'mac': b'f4:3c:4a:73:47:07', 'ip': b'192.168.2.2'}]
+    [{'mac': b'73:8b:10:0e:bd:23', 'ip': b'192.168.1.1'}, {'mac': b'f4:3c:4a:73:47:07', 'ip': b'192.168.1.2'}]
 
 
 Notes
@@ -47,7 +47,7 @@ This tool needs to be run as root. It is necessary to be presented on the system
 * /sw/bin/netdiscover
 * /opt/local/bin/netdiscover
 
-If *netdiscovery* is not present in any of the paths above, you can specifie path with the argument *netdiscover_path* on Discover object.
+If *netdiscovery* is not present in any of the paths above, you can specifie path with the argument *netdiscover_path* on Discover class.
 
 .. code-block:: python
 
