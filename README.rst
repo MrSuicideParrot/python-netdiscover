@@ -29,6 +29,7 @@ From python/ipython:
 --------------------
 
 .. code-block:: python
+
     >>> from netdiscover import *
     >>> disc = Discover()
     >>> disc.scan(ip_range="192.168.1.0/24")
@@ -38,6 +39,7 @@ From python/ipython:
 Notes
 =====
 This tool needs to be run as root. It is necessary to be presented on the system the *netdiscover* tool. The library will look for the *netdiscovery* binary in the following paths:
+
 *  netdiscover
 * /usr/bin/netdiscover
 * /usr/sbin/netdiscover
@@ -45,6 +47,8 @@ This tool needs to be run as root. It is necessary to be presented on the system
 * /sw/bin/netdiscover
 * /opt/local/bin/netdiscover
 
-If *netdiscovery* is not present in any of the paths above, you can specifie path with the *netdiscover_path* on Discover object.
+If *netdiscovery* is not present in any of the paths above, you can specifie path with the argument *netdiscover_path* on Discover object.
+
 .. code-block:: python
+
     disc = Discover(netdiscover_path="path_of_netdiscover")
