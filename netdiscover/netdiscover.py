@@ -52,6 +52,9 @@ class Discover:
         self.command = 'netdiscover -P -N'
 
     def get_command(self):
+        """
+        :return: Commad used to scan the network
+        """
         return self.command
 
     def scan(self, interface=None, ip_range=None, file=None, passive=False, filter_p=None, sleep=None, node=None,
