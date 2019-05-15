@@ -6,12 +6,12 @@ import shlex
 
 class Discover:
 
-    def __init__(self, netdiscover_path=None):
+    def __init__(self, netdiscover_path=None, root_verify=True):
         """
         :param netdiscover_path: Path where is the netdiscover binary. If not defined it will search on defaults netdiscover locations
-
+        :param root_verify: Verify if the user is root
         """
-        if os.getenv('USER') != 'root':
+        if root_verify and os.getenv('USER') != 'root':
             raise Exception('Programming not running as root.')
 
         path_found = False
