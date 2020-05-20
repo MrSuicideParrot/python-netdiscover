@@ -19,6 +19,8 @@ This library offers a simple way to create scans from a python script and analys
 
 Installation
 ============
+First, you will need to install the `netdiscover binary <https://sourceforge.net/projects/netdiscover/>`_ on your system, this may depend on your operating system. Many distributions have this tool available in `their main repository <https://pkgs.org/download/netdiscover>`_. 
+
 From the shell, uncompress python-netdiscover.tar.gz and then run make :
 
 .. code-block:: bash
