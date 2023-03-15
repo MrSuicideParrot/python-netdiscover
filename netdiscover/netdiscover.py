@@ -71,6 +71,7 @@ class Discover:
         :param count: Number of times to send each arp reques (for nets with packet loss)
         :param fast: Enable fastmode scan, saves a lot of time, recommended for auto
         :param sleep_supression:  Enable sleep time supression betwen each request (hardcore mode)
+        :param output: List of elements that should be part of the output, by default thats ip and mac.
 
         :return: List with the result of the scan
         """
@@ -119,7 +120,7 @@ class Discover:
         """
 
         :param data: Raw output to parse
-        :param output: List of elements that should be part of the output, by default thats ip and mac.
+        :param output: List of elements that should be part of the output.
         :return: List with the results from the scan. Each result is represented by a dictionary.
         """
 
