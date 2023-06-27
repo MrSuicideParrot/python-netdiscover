@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 import shlex
-
+import re
 
 class Discover:
 
@@ -58,7 +58,7 @@ class Discover:
         return self.command
 
     def scan(self, interface=None, ip_range=None, file=None, passive=False, filter_p=None, sleep=None, node=None,
-             count=None, fast=None, sleep_supression=None):
+             count=None, fast=None, sleep_supression=None, output=["ip","mac"]):
         """
         :param interface: Your network device
         :param ip_range: Scan a given range instead of auto scan. 192.168.6.0/24,/16,/8
@@ -71,6 +71,7 @@ class Discover:
         :param count: Number of times to send each arp reques (for nets with packet loss)
         :param fast: Enable fastmode scan, saves a lot of time, recommended for auto
         :param sleep_supression:  Enable sleep time supression betwen each request (hardcore mode)
+        :param output: List of elements that should be part of the output, by default thats ip and mac.
 
         :return: List with the result of the scan
         """
@@ -110,28 +111,37 @@ class Discover:
             self.command += ' -S'
 
         self._raw_result = subprocess.check_output(shlex.split(self.command))
-        self._scan_result = self.parse_output(self._raw_result)
+        self._scan_result = self.parse_output(self._raw_result, output)
 
         return self._scan_result
 
     @staticmethod
-    def parse_output(out):
+    def parse_output(data, output):
         """
 
-        :param out: Raw output to parse
-        :return: List with the results from the scan. Each result is represented by a dictionary with two keys, 'ip' and 'mac'.
+        :param data: Raw output to parse
+        :param output: List of elements that should be part of the output.
+        :return: List with the results from the scan. Each result is represented by a dictionary.
         """
-        content = out.split(b"\n")
-        content = content[:-3]
+
+        # decode and split raw output
+        content = data.decode("UTF-8").split("\n")
+
+        # sanitize user coices for output
+        output = [key for key in output if key in ("ip","mac","count","len","vendor")]
 
         results = []
 
         if len(content) != 0:
-            for i in content:
-                pars = i.split()
-                results.append({
-                    'ip': pars[0],
-                    'mac': pars[1]
-                })
+            for chunk in content:
+                pars = re.search(r"\s?(?P<ip>\d+\.\d+\.\d+\.\d+)"
+                                 r"\s+(?P<mac>[a-fA-F0-9:]{17})"
+                                 r"\s+(?P<count>\d+)"
+                                 r"\s+(?P<len>\d+)"
+                                 r"\s+(?P<vendor>.*)",
+                                 chunk)
+                if pars:
+                    pars = pars.groupdict()
+                    results.append({key: pars[key] for key in output})
 
         return results
