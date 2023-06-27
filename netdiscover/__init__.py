@@ -4,6 +4,6 @@
 
 __author__ = """André Cirne"""
 __email__ = 'ancirne@gmail.com'
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 from .netdiscover import *

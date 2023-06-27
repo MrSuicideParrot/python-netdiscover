@@ -11,3 +11,8 @@ History
 ------------------
 
 * Adding the option to disable the root privileges verification.
+
+0.3.0 (2023-06-27)
+------------------
+
+* Adding the option to configure output
